@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Properties | Villa Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: #f7f7f7;
+      padding: 6px 0;
+      font-size: 13px;
+    }
+
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ff5533;
+    }
+
+    .visit-btn {
+      background: #ff5533;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .visit-btn:hover {
+      background: #e04a2c;
+    }
+
+    /* Hero */
+    .hero {
+      background: url("https://i.ibb.co/V2pH8Mn/hero-bg.jpg") center/cover no-repeat;
+      padding: 90px 0;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content p {
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+
+    .hero-content h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    /* Filters */
+    .filters {
+      text-align: center;
+      margin: 50px auto 30px;
+    }
+
+    .filters button {
+      border: none;
+      background: #333;
+      color: #fff;
+      margin: 0 8px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .filters button.active {
+      background: #ff5533;
+    }
+
+    .filters button:hover {
+      background: #ff5533;
+    }
+
+    /* Properties Grid */
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .properties {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ffe9e3;
+      color: #ff5533;
+      font-size: 13px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    .card-body h3 {
+      color: #ff5533;
+      margin: 10px 0;
+    }
+
+    .card-body p {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .card-body ul {
+      list-style: none;
+      font-size: 13px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .visit {
+      display: block;
+      margin-top: 12px;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .visit:hover {
+      background: #ff5533;
+    }
+
+    /* Pagination */
+    .pagination {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .pagination a {
+      display: inline-block;
+      background: #eee;
+      color: #111;
+      margin: 0 5px;
+      padding: 8px 12px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .pagination a:hover {
+      background: #ff5533;
+      color: #fff;
+    }
+
+    .pagination a.active {
+      background: #ff5533;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .navbar {
+        flex-direction: column;
+      }
+      .visit-btn {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="top-bar">
+      <div class="container">
+        <span>📧 info@company.com</span>
+        <span>📍 Sunny Isles Beach, FL 33160</span>
+      </div>
+    </div>
+    <nav class="navbar">
+      <div class="logo">VILLA</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#" class="active">Properties</a></li>
+        <li><a href="Property.HTML">Property Details</a></li>
+        <li><a href="contact.HTML">Contact Us</a></li>
+      </ul>
+      <button class="visit-btn">Schedule a visit</button>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p>HOME / PROPERTIES</p>
+      <h1>PROPERTIES</h1>
+    </div>
+  </section>
+
+  <!-- Filter Buttons -->
+  <section class="filters container">
+    <button class="active">Show All</button>
+    <button>Apartment</button>
+    <button>Villa House</button>
+    <button>Penthouse</button>
+  </section>
+
+  <!-- Properties Grid -->
+  <section class="properties container">
+    <!-- Property Card 1 -->
+    <div class="card">
+      <img src="https://i.ibb.co/SXxkBnW/villa1.jpg" alt="Villa">
+      <div class="card-body">
+        <span class="tag">Luxury Villa</span>
+        <h3>$2,264,000</h3>
+        <p>18 Old Street Miami, OR 97219</p>
+        <ul>
+          <li>Bedrooms: 8</li>
+          <li>Bathrooms: 8</li>
+          <li>Area: 545m²</li>
+          <li>Floor: 3</li>
+          <li>Parking: 6 spots</li>
+        </ul>
+        <button class="visit">Schedule a visit</button>
+      </div>
+    </div>
+
+    <!-- Property Card 2 -->
+    <div class="card">
+      <img src="https://i.ibb.co/BgNPS1v/villa2.jpg" alt="Villa">
+      <div class="card-body">
+        <span class="tag">Luxury Villa</span>
+        <h3>$1,180,000</h3>
+        <p>54 New Street Florida, OR 27001</p>
+        <ul>
+          <li>Bedrooms: 6</li>
+          <li>Bathrooms: 5</li>
+          <li>Area: 450m²</li>
+          <li>Floor: 3</li>
+          <li>Parking: 8 spots</li>
+        </ul>
+        <button class="visit">Schedule a visit</button>
+      </div>
+    </div>
+
+    <!-- Property Card 3 -->
+    <div class="card">
+      <img src="https://i.ibb.co/MhPR5fk/villa3.jpg" alt="Villa">
+      <div class="card-body">
+        <span class="tag">Luxury Villa</span>
+        <h3>$1,460,000</h3>
+        <p>26 Mid Street Portland, OR 38540</p>
+        <ul>
+          <li>Bedrooms: 5</li>
+          <li>
