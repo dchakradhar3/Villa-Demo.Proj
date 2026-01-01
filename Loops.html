@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Year Dropdown Example</title>
+</head>
+<body>
+  <h3>Select Year:</h3>
+  <select id="yearDropdown"></select>
+
+  <script>
+    const dropdown = document.getElementById("yearDropdown");
+
+
+    // --- Using do-while loop ---
+
+    let year = 1980;
+    do {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      dropdown.appendChild(option);
+      year++;
+    } while (year <= 2025);
+
+    /*
+    // --- Using while loop ---
+    let year = 1980;
+    while (year <= 2025) {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      dropdown.appendChild(option);
+      year++;
+    }
+    */
+
+    // --- Using for loop ---
+    /*
+    for (let year = 1980; year <= 2025; year++) {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      dropdown.appendChild(option);
+    }
+    */
+  </script>
+</body>
+</html>

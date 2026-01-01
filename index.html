@@ -1,60 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Villa Agency | Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Villa</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --accent:#ff6b4a;
+      --soft:#f9f6f5;
+      --muted:#7a7a7a;
+      --card-shadow: 0 6px 20px rgba(20,20,20,0.08);
+      --radius:16px;
+    }
+
+    body{ font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color:#222; background:#fff; }
+
+    /* NAV */
+    .navbar-brand { font-weight:700; letter-spacing:1px;}
+    .topbar{font-size:14px; background: #fff; border-bottom:1px solid rgba(3, 3, 3, 0.967);}
+
+    /* HERO */
+    .hero {
+      position:relative;
+      background-image: url('/Images/banner-01.jpg');
+      background-size:cover;
+      background-position:center;
+      min-height:520px;
+      display:flex;
+      align-items:center;
+      color:white;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.12) 60%);
+    }
+    .hero .container{ position:relative; z-index:2; }
+
+    .hero .badge-small{
+      background:rgba(255,255,255,0.9);
+      color:#333;
+      padding:.35rem .6rem;
+      border-radius:6px;
+      font-size:12px;
+      display:inline-block;
+      margin-bottom:1rem;
+      font-weight:600;
+    }
+
+    .hero h1{
+      font-size:44px;
+      line-height:1.02;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    .hero p.lead{ color:rgba(255,255,255,0.95); max-width:620px; }
+
+    /* feature band */
+    .feature-card{
+      border-radius:16px;
+      box-shadow:var(--card-shadow);
+      background:white;
+      padding:1.25rem;
+    }
+
+    .mini-info .icon-box{
+      width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+      background:var(--soft); font-size:20px;
+    }
+
+    /* Gallery promo */
+    .promo-bg{
+      background-image: url('./assets/promo.jpg');
+      background-size:cover; background-position:center; min-height:220px;
+      border-radius:14px; position:relative; overflow:hidden;
+    }
+    .promo-bg::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.35)); }
+
+    /* numbers */
+    .stat {
+      background: #fff; border-radius:12px; padding:1rem; box-shadow:var(--card-shadow); text-align:center;
+    }
+
+    /* property cards */
+    .property-card{ border-radius:14px; box-shadow:var(--card-shadow); overflow:hidden; background:white; }
+    .property-card img{ width:100%; height:170px; object-fit:cover; display:block; }
+
+    /* contact/map */
+    .map-card{ border-radius:12px; overflow:hidden; box-shadow:var(--card-shadow); }
+    .contact-form .form-control{ border-radius:10px; }
+
+    /* footer */
+    footer{ background:#0f1720; color:#e6e6e6; padding:2rem 0; }
+
+    /* small screens */
+    @media (max-width: 767.98px){
+      .hero h1{ font-size:30px; }
+      .hero { min-height:360px; padding-top:3.5rem; padding-bottom:3.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Header -->
-<header class="bg-light py-2 border-bottom">
-  <div class="container d-flex justify-content-between align-items-center small">
-    <div>
-      <i class="bi bi-envelope"></i> info@company.com |
-      <i class="bi bi-geo-alt"></i> Sunny Isles Beach, FL 33160
-    </div>
-    <div>
-      <a href="#" class="me-2"><i class="bi bi-facebook"></i></a>
-      <a href="#"><i class="bi bi-twitter"></i></a>
-    </div>
+  <!-- TOPBAR -->
+  <div class="topbar small">
+    <div class="container d-flex justify-content-between py-2">
+      <div><i class="fa fa-map-marker-alt me-2"></i><img src="/Images/email-icon.png" height="10px" width="10px"> info@company.com | Sunny Isles Beach, FL 33160</div>    </div>
   </div>
-</header>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-white shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="#">VILLA</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-         <li class="nav-item"><a class="nav-link" href="Property Details.html">Property</a></li>
-        <li class="nav-item"><a class="nav-link" href="property.html">Property Details</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.HTML">Contact Us</a></li>
-      </ul>
-      <a href="#" class="btn btn-dark ms-3">Schedule a Visit</a>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="#">VILLA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li><a href="#" class="nav-link">Home</a></li>
+          <li><a href="Property Details.html" class="nav-link">Properties</a></li>
+          <li><a href="Property.HTML" class="nav-link">Property Details</a></li>
+          <li><a href="contact.HTML" class="nav-link">Contact Us</a></li>
+        </ul>
+        <a class="btn btn-dark ms-lg-3" href="#"><i class="fa fa-calendar me-2"></i> Schedule a visit</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- Hero Section -->
-<section class="hero position-relative text-white text-center" style="background:url('https://drive.google.com/file/d/1n1zgc445b6d3Xahm5K6QjodzrE54RxXY/view?usp=drive_link') center/cover; height:80vh;">
-  <div class="position-absolute top-50 start-50 translate-middle">
-    <h1 class="fw-bold">HURRY! GET THE BEST VILLA FOR YOU</h1>
-  </div>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <span class="badge-small">Toronto,<span style="color:var(--accent);">Canada</span></span>
+          <h1>Hurry! <br/> Get The Best <br>Villa For You</h1>
+        </div>
+    </div>
+  </section>
 
-<!-- Featured Property -->
-<section class="py-5">
+  <!-- HIGHLIGHT / PROMO -->
+  <section class="py-5">
+   <section class="py-5">
   <div class="container">
     <h2 class="fw-bold mb-4">Best Apartment & Sea View</h2>
     <div class="row">
-      <div class="col-md-6"><img src="images/interior1.jpg" class="img-fluid rounded"></div>
+      <div class="col-md-6"><img src="/Images/featured.jpg" class="img-fluid rounded"></div>
       <div class="col-md-6 d-flex flex-column justify-content-center">
         <p>Set behind the blue waters edge, this villa offers luxurious living with private pools and smart home features.</p>
         <ul class="list-unstyled">
@@ -68,60 +164,228 @@
   </div>
 </section>
 
-<!-- Properties -->
-<section class="bg-light py-5">
-  <div class="container text-center">
-    <h2 class="fw-bold mb-5">We Provide The Best Property You Like</h2>
-    <div class="row g-4">
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm">
-          <img src="images/villa1.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5>18 New Street Miami, OR 97118</h5>
-            <p>$2,264,000</p>
-            <a href="property.html" class="btn btn-outline-dark btn-sm">View Details</a>
+        <div class="col-lg-7">
+          <div class="promo-bg d-flex align-items-end p-4">
+            <div class="w-100 text-white">
+              <h4 class="mb-1">Get Closer View & Different Feeling</h4>
+              <p class="small mb-3">Take a virtual walkthrough of our premium selections.</p>
+              <a class="btn btn-light btn-sm" href="#"><i class="fa fa-play me-2"></i>Play Video</a>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 mt-4">
+            <div class="stat flex-fill">
+              <div class="h2 text-danger">34</div>
+              <small class="text-muted">Buildings Finished Now</small>
+            </div>
+            <div class="stat flex-fill">
+              <div class="h2">12</div>
+              <small class="text-muted">Years Experience</small>
+            </div>
+            <div class="stat flex-fill">
+              <div class="h2">24</div>
+              <small class="text-muted">Awards Won 2023</small>
+            </div>
           </div>
         </div>
+
       </div>
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm">
-          <img src="images/villa2.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5>64 Mid Street Florida, OR 27001</h5>
-            <p>$1,380,000</p>
-            <a href="property.html" class="btn btn-outline-dark btn-sm">View Details</a>
+    </div>
+  </section>
+
+  <!-- DEAL FINDER -->
+  <section class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-4">
+          <div class="card p-3 feature-card border-0">
+            <h6 class="text-uppercase small text-muted">Find Your Best Deal</h6>
+            <h4 class="mb-3">Right Now!</h4>
+            <form class="row g-2">
+              <div class="col-12">
+                <label class="form-label small">Area (m²)</label>
+                <input class="form-control form-control-sm" value="185 m2"/>
+              </div>
+              <div class="col-6">
+                <label class="form-label small">Rooms</label>
+                <input class="form-control form-control-sm" value="2/4"/>
+              </div>
+              <div class="col-6">
+                <label class="form-label small">Parking</label>
+                <input class="form-control form-control-sm" value="Yes"/>
+              </div>
+              <div class="col-12 mt-2">
+                <button class="btn btn-danger w-100">Search Now</button>
+              </div>
+            </form>
           </div>
         </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card border-0 shadow-sm">
-          <img src="images/villa3.jpg" class="card-img-top">
-          <div class="card-body">
-            <h5>26 Old Street Miami, OR 85460</h5>
-            <p>$1,450,000</p>
-            <a href="property.html" class="btn btn-outline-dark btn-sm">View Details</a>
+
+        <div class="col-lg-8">
+          <div class="d-flex gap-3 align-items-center">
+            <img src="./assets/deal-thumb.jpg" alt="deal" style="width:160px; height:120px; object-fit:cover; border-radius:10px;">
+            <div>
+              <h5>Extra Info About Property</h5>
+              <p class="small text-muted mb-1">Detailed description to help buyers understand location, history, and conditions.</p>
+              <a class="btn btn-outline-secondary btn-sm" href="#">Schedule a Visit</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact Section -->
-<section class="py-5">
-  <div class="container text-center">
-    <h3 class="fw-bold mb-3">Get In Touch With Our Agents</h3>
-    <p>010-020-0340 | info@villa.co</p>
-    <iframe src="https://maps.google.com/maps?q=Sunny%20Isles%20Beach&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0;"></iframe>
-  </div>
-</section>
+  <!-- PROPERTIES GRID -->
+  <section class="py-5">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h3>We Provide The Best Property You Like</h3>
+        <p class="text-muted">Handpicked homes, updated daily.</p>
+      </div>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3">
-  Copyright © 2048 Villa Agency Co., Ltd. All rights reserved. Design: XYZ
-</footer>
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="./assets/property1.jpg" alt="property 1">
+            <div class="p-3">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <h6 class="mb-1">18 New Street Miami, OR 97218</h6>
+                  <small class="text-muted">4 beds • 3 baths • 2,400 sqft</small>
+                </div>
+                <div class="text-end">
+                  <div class="fw-bold text-danger">$2,246,000</div>
+                  <small class="text-muted">For Sale</small>
+                </div>
+              </div>
+              <div class="mt-3">
+                <a class="btn btn-outline-dark btn-sm" href="#">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="./assets/property2.jpg" alt="property 2">
+            <div class="p-3">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <h6 class="mb-1">64 Mid Street Florida, OR 27001</h6>
+                  <small class="text-muted">3 beds • 2 baths • 1,900 sqft</small>
+                </div>
+                <div class="text-end">
+                  <div class="fw-bold text-danger">$1,310,000</div>
+                  <small class="text-muted">For Sale</small>
+                </div>
+              </div>
+              <div class="mt-3">
+                <a class="btn btn-outline-dark btn-sm" href="#">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="property-card">
+            <img src="./assets/property3.jpg" alt="property 3">
+            <div class="p-3">
+              <div class="d-flex justify-content-between align-items-start">
+                <div>
+                  <h6 class="mb-1">26 Old Street Miami, OR 32460</h6>
+                  <small class="text-muted">5 beds • 4 baths • 3,500 sqft</small>
+                </div>
+                <div class="text-end">
+                  <div class="fw-bold text-danger">$1,450,000</div>
+                  <small class="text-muted">For Sale</small>
+                </div>
+              </div>
+              <div class="mt-3">
+                <a class="btn btn-outline-dark btn-sm" href="#">View Details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- more cards... -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT / MAP -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-4 align-items-start">
+        <div class="col-lg-7">
+          <div class="map-card">
+            <!-- replace with real map embed or screenshot -->
+            <img src="./assets/map.jpg" style="width:100%; height:360px; object-fit:cover;" alt="map">
+          </div>
+
+          <div class="d-flex gap-3 mt-3">
+            <div class="p-3 bg-white rounded" style="box-shadow:var(--card-shadow);">
+              <i class="fa fa-phone fa-lg text-danger"></i>
+              <div class="small mt-2">010-020-0340</div>
+            </div>
+            <div class="p-3 bg-white rounded" style="box-shadow:var(--card-shadow);">
+              <i class="fa fa-envelope fa-lg text-danger"></i>
+              <div class="small mt-2">info@villa.co</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card p-4 contact-form">
+            <h5>Get In Touch With Our Agents</h5>
+            <form class="mt-3">
+              <div class="mb-2">
+                <input class="form-control" placeholder="Full Name">
+              </div>
+              <div class="mb-2">
+                <input class="form-control" placeholder="Email Address">
+              </div>
+              <div class="mb-2">
+                <input class="form-control" placeholder="Phone Number">
+              </div>
+              <div class="mb-2">
+                <input class="form-control" placeholder="Subject">
+              </div>
+              <div class="mb-2">
+                <textarea class="form-control" rows="4" placeholder="Message"></textarea>
+              </div>
+              <div>
+                <button class="btn btn-danger w-100">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h5 class="mb-2">VILLA</h5>
+          <p class="small text-muted">© 2025 Villa Agency Co. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a class="text-light me-3" href="#"><i class="fa fa-instagram"></i></a>
+          <a class="text-light me-3" href="#"><i class="fa fa-facebook"></i></a>
+          <a class="text-light" href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

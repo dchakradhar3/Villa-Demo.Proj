@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Function Tests</title>
+</head>
+<body>
+
+  <h1>JavaScript Function Demonstrations</h1>
+
+  <!-- 1. Reverse a String -->
+  <div class="section">
+    <h2>1. Reverse a String</h2>
+    <input type="text" id="reverseInput" placeholder="Enter a string">
+    <button onclick="showReverse()">Reverse</button>
+    <p id="reverseResult" class="result"></p>
+  </div>
+
+  <!-- 2. Palindrome Check -->
+  <div class="section">
+    <h2>2. Check Palindrome</h2>
+    <input type="text" id="palindromeInput" placeholder="Enter a string">
+    <button onclick="checkPalindrome()">Check</button>
+    <p id="palindromeResult" class="result"></p>
+  </div>
+
+  <!-- 3. Remove Duplicates -->
+  <div class="section">
+    <h2>3. Remove Duplicates from Array</h2>
+    <input type="text" id="duplicateInput" placeholder="Enter numbers e.g. 1,2,2,3">
+    <button onclick="removeDuplicateElements()">Remove Duplicates</button>
+    <p id="duplicateResult" class="result"></p>
+  </div>
+
+  <!-- 4. Find Largest Number -->
+  <div class="section">
+    <h2>4. Find Largest Number in Array</h2>
+    <input type="text" id="largestInput" placeholder="Enter numbers e.g. 10,20,5">
+    <button onclick="findLargestNumber()">Find Largest</button>
+    <p id="largestResult" class="result"></p>
+  </div>
+
+  <!-- 5. Prime Number Check -->
+  <div class="section">
+    <h2>5. Check Prime Number</h2>
+    <input type="number" id="primeInput" placeholder="Enter a number">
+    <button onclick="checkPrime()">Check</button>
+    <p id="primeResult" class="result"></p>
+  </div>
+
+  <script>
+    // 1. Reverse String
+    function reverseString(str) {
+      return str.split('').reverse().join('');
+    }
+    function showReverse() {
+      const input = document.getElementById("reverseInput").value;
+      document.getElementById("reverseResult").textContent =
+        "Reversed: " + reverseString(input);
+    }
+
+    // 2. Palindrome Check
+    function isPalindrome(str) {
+      const reversed = str.split('').reverse().join('');
+      return str === reversed;
+    }
+    function checkPalindrome() {
+      const input = document.getElementById("palindromeInput").value;
+      const result = isPalindrome(input)
+        ? `"${input}" is a palindrome ✅`
+        : `"${input}" is NOT a palindrome ❌`;
+      document.getElementById("palindromeResult").textContent = result;
+    }
+
+    // 3. Remove Duplicates
+    function removeDuplicates(arr) {
+      return [...new Set(arr)];
+    }
+    function removeDuplicateElements() {
+      const input = document.getElementById("duplicateInput").value;
+      const arr = input.split(',').map(Number);
+      const uniqueArr = removeDuplicates(arr);
+      document.getElementById("duplicateResult").textContent =
+        "Unique Array: [" + uniqueArr.join(", ") + "]";
+    }
+
+    // 4. Find Largest Number
+    function findLargest(arr) {
+      return Math.max(...arr);
+    }
+    function findLargestNumber() {
+      const input = document.getElementById("largestInput").value;
+      const arr = input.split(',').map(Number);
+      const largest = findLargest(arr);
+      document.getElementById("largestResult").textContent =
+        "Largest Number: " + largest;
+    }
+
+    // 5. Prime Check
+    function isPrime(num) {
+      if (num <= 1) return false;
+      for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+      }
+      return true;
+    }
+    function checkPrime() {
+      const num = parseInt(document.getElementById("primeInput").value);
+      const result = isPrime(num)
+        ${num} is a prime number;
+        ${num} is NOT a prime number;
+      document.getElementById("primeResult").textContent = result;
+    }
+  </script>
+
+</body>
+</html>
